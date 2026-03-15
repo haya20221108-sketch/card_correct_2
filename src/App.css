@@ -245,7 +245,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: 10px;
-  border-bottom: 1px; solid #eee
+  border-bottom: 1px solid #eee;
 }
 
 .acc-info {
