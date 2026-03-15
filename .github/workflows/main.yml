@@ -2,27 +2,24 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - main  # CodeSandboxから送られてくるブランチ名が 'master' の場合はここを master に書き換えてください
+      - main
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
       - name: Install Dependencies
         run: npm ci
-
+        
       - name: Build
         run: npm run build
-
-      - name: Deploy to Firebase Hosting
+        
+      - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          # さっき登録した FIREBASE_TOKEN を使って認証します
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLLECT_CARD }}' 
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: collect-card
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
