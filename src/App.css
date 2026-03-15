@@ -249,7 +249,7 @@ body {
 }
 
 .acc-info {
-  display: flex: ;
+  display: flex;
   flex-direction: column;
   text-align: left;
 }
